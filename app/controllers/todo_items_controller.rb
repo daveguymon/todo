@@ -1,5 +1,5 @@
 class TodoItemsController < ApplicationController
-  before_action :set_todo_list, only: [:create]
+  before_action :set_todo_list, only: [:create, :destroy]
 
   # POST /todo_lists/:todo_list_id/todo_items
   # POST /todo_lists/:todo_list_id/todo_items.json
@@ -10,6 +10,19 @@ class TodoItemsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  # DELETE /todo_lists/:todo_list_id/todo_items/1
+  # DELETE /todo_lists/:todo_list_id/todo_items/1.json
+  def destroy
+    @todo_item = @todo_list.todo_items.find(params[:id])
+    if @todo_item.destroy
+      flash[:success] = "Todo list item was deleted."
+    else
+      flash[:error] = "Todo list item could not be deleted."
+    end
+
+    redirect_to @todo_list
   end
 
 private
