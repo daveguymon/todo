@@ -3,7 +3,7 @@
 @import 'bootstrap';
 @import 'font-awesome';
 
-$breakpoint-phone: 400px;
+$breakpoint-phone: 600px;
 $glg_pink: #fa2b6b;
 $glg_black: black;
 $glg_white: white;
@@ -66,12 +66,38 @@ body {
       }
     }
   }
+  .new-object-container {
+    width: 75%;
+    height: 45px;
+    margin: 10px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $glg_black;
+    background-color: #f7f9fc;
 
-  @media (max-width: $breakpoint-phone) {
+    &:hover {
+      background-color: $glg_pink;
+      border-color: $glg_pink;
+      a {
+        color: $glg_white;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-phone) {
+  body {
+    width: 100%;
+
     .title-container {
       width: 95%;
+      height: 10vh;
     }
     .card {
+      width: 95%;
+    }
+    .new-object-container {
       width: 95%;
     }
   }
