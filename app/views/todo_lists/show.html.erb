@@ -1,9 +1,7 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= @todo_list.title %></h1>
 
 <h4><%= @todo_list.description %></h4>
 
-<%= render @todo_list.todo_items %>
+<%= render @todo_list.todo_items.order('is_completed ASC NULLS FIRST') %>
 
 <%= render :partial => "todo_items/form" %>
