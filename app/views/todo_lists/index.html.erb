@@ -28,6 +28,6 @@
 
 <br>
 
-<div class="new-object-container">
-  <%= link_to 'NEW TODO LIST', new_todo_list_path %>
-</div>
+<%= link_to new_todo_list_path, :class => "new-object-container" do %>
+    <div>NEW TODO LIST</div>
+<% end %>
