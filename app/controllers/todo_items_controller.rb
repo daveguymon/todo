@@ -7,7 +7,11 @@ class TodoItemsController < ApplicationController
   def complete
     @todo_item = @todo_list.todo_items.find(params[:todo_item_id])
     @todo_item.update_attributes(:is_completed => true)
-
+    if @todo_item.save
+      flash[:success] = "Todo list item completed."
+    else
+      flash[:error] = "Todo list item could not be marked complete."
+    end
     redirect_to @todo_list
   end
 
@@ -15,13 +19,22 @@ class TodoItemsController < ApplicationController
   # POST /todo_lists/:todo_list_id/todo_items.json
   def create
     @todo_item = @todo_list.todo_items.create(todo_item_params)
-
-    redirect_to @todo_list
+    if @todo_item.save
+      redirect_to @todo_list
+    else
+      redirect_to @todo_list
+    end
   end
 
   # DELETE /todo_lists/:todo_list_id/todo_items/1
   # DELETE /todo_lists/:todo_list_id/todo_items/1.json
   def destroy
+    if @todo_item.destroy
+      flash[:success] = "Todo list item was deleted."
+    else
+      flash[:error] = "Todo list item could not be deleted."
+    end
+
     redirect_to @todo_list
   end
 
@@ -30,7 +43,11 @@ class TodoItemsController < ApplicationController
   def incomplete
     @todo_item = @todo_list.todo_items.find(params[:todo_item_id])
     @todo_item.update_attributes(:is_completed => false)
-    
+    if @todo_item.save
+      flash[:success] = "Todo list item marked incomplete."
+    else
+      flash[:error] = "Todo list item could not be marked incomplete."
+    end
     redirect_to @todo_list
   end
 
@@ -46,6 +63,6 @@ private
 
   # Only allow trusted parameters through.
   def todo_item_params
-    params.require(:todo_item).permit(:content)
+    params.require(:todo_item).permit(:content, :priority)
   end
 end

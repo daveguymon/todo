@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_15_193432) do
+ActiveRecord::Schema.define(version: 2020_03_15_221629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_03_15_193432) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_completed"
+    t.integer "priority"
     t.index ["todo_list_id"], name: "index_todo_items_on_todo_list_id"
   end
 
