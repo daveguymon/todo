@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :todo_lists do
     resources :todo_items do
       patch :complete
+      patch :incomplete
     end
   end
 end

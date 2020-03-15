@@ -1,12 +1,12 @@
 class TodoItemsController < ApplicationController
   before_action :set_todo_list
-  before_action :set_todo_item, except: [:complete, :create]
+  before_action :set_todo_item, except: [:complete, :create, :incomplete]
 
   # PATCH  /todo_lists/:todo_list_id/todo_items/:todo_item_id/complete
   # PATCH  /todo_lists/:todo_list_id/todo_items/:todo_item_id/complete.json
   def complete
     @todo_item = @todo_list.todo_items.find(params[:todo_item_id])
-    @todo_item.update_attributes(:completed_at => DateTime.current)
+    @todo_item.update_attributes(:is_completed => true)
     if @todo_item.save
       flash[:success] = "Todo list item completed."
     else
@@ -35,6 +35,19 @@ class TodoItemsController < ApplicationController
       flash[:error] = "Todo list item could not be deleted."
     end
 
+    redirect_to @todo_list
+  end
+
+  # PATCH  /todo_lists/:todo_list_id/todo_items/:todo_item_id/incomplete
+  # PATCH  /todo_lists/:todo_list_id/todo_items/:todo_item_id/incomplete.json
+  def incomplete
+    @todo_item = @todo_list.todo_items.find(params[:todo_item_id])
+    @todo_item.update_attributes(:is_completed => false)
+    if @todo_item.save
+      flash[:success] = "Todo list item marked incomplete."
+    else
+      flash[:error] = "Todo list item could not be marked incomplete."
+    end
     redirect_to @todo_list
   end
 

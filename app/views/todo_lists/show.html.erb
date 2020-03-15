@@ -1,21 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @todo_list.title %>
-</p>
+<h1><%= @todo_list.title %></h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @todo_list.description %>
-</p>
+<h4><%= @todo_list.description %></h4>
 
-<div id="todo_items_wrapper">
-  <%= render @todo_list.todo_items %>
-  <div id="form">
-    <%= render :partial => "todo_items/form" %>
-  </div>
-</div>
+<%= render @todo_list.todo_items %>
 
-<%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
-<%= link_to 'Back', todo_lists_path %>
+<%= render :partial => "todo_items/form" %>

@@ -3,7 +3,12 @@
     <%= form.text_field :content, placeholder: "New todo"  %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="button-container btn-column">
+    <div class="button new-object-container">
+      <%= form.submit "CREATE TASK" %>
+    </div>
+      <%= link_to todo_lists_path, :class => "button new-object-container" do %>
+        <div>BACK</div>
+      <% end %>
   </div>
 <% end %>

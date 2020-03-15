@@ -1,10 +1,32 @@
-<div class="row">
+<div class="card">
   <% if todo_item.completed? %>
-    <p><strike><%= todo_item.content %></strike></p>
-    <%= link_to 'Delete', todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: "Are you sure?" } %>
+    <h4><strike><%= todo_item.content %></strike></h4>
+    <div class="button-container">
+      <div class="button">
+        <%= link_to todo_list_todo_item_incomplete_path(@todo_list, todo_item.id), method: :patch, :class => 'hide-btn' do %>
+          <span><%= fa_icon('check-square lg') %></span>
+        <% end %>
+      </div>
+      <div class="button">
+        <%= link_to todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'hide-btn' do %>
+          <span><%= fa_icon('trash lg') %></span>
+        <% end %>
+      </div>
+    </div>
   <% else %>
-    <p><%= todo_item.content %></p>
-    <%= link_to 'Delete', todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: "Are you sure?" } %>
-    <%= link_to 'Mark Complete', todo_list_todo_item_complete_path(@todo_list, todo_item.id), method: :patch %>
-  <% end %>
+    <h4><%= todo_item.content %></h4>
+    <div class="button-container">
+      <div class="button">
+        <%= link_to todo_list_todo_item_complete_path(@todo_list, todo_item.id), method: :patch, :class => 'hide-btn' do %>
+          <span><%= fa_icon('square lg') %></span>
+        <% end %>
+      </div>
+
+      <div class="button">
+        <%= link_to todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'hide-btn' do %>
+          <span><%= fa_icon('trash lg') %></span>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
 </div>
