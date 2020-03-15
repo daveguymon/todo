@@ -1,0 +1,78 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'font-awesome';
+
+$breakpoint-phone: 400px;
+$glg_pink: #fa2b6b;
+$glg_black: black;
+$glg_white: white;
+
+body {
+  background-color: #f7f9fc;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  font-family: 'Karla', sans-serif;
+
+  .fa {
+    color: $glg_black;
+
+    &:hover,
+    &:focus {
+      color: $glg_pink;
+    }
+  }
+
+  a {
+    color: $glg_black;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $glg_pink;
+    text-decoration: none;
+  }
+
+  .title-container {
+    width: 75%;
+    background-color: $glg_pink;
+    margin: 10px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $glg_white;
+  }
+
+  .card {
+    background-color: $glg_white;
+    width: 75%;
+    border-radius: 5px;
+    margin: 5px 0px;
+    padding: 5px;
+    box-shadow: 5px 5px 2.5px grey;
+
+    .button-container {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+
+      .button {
+        margin: 5px;
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-phone) {
+    .title-container {
+      width: 95%;
+    }
+    .card {
+      width: 95%;
+    }
+  }
+}
