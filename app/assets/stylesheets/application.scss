@@ -115,7 +115,30 @@ body {
   }
 
   form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .remember-container {
+      width: 75%;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      align-items: center;
+      margin: 0px;
+
+      label {
+        margin: 0px;
+      }
+
+      #user_remember_me {
+        margin: 0px;
+        margin-left: 10px;
+      }
+    }
     div {
+      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
