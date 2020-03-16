@@ -6,6 +6,7 @@
   <%= link_to todo_list, :class => "card-link" do %>
   <div class="card">
     <div class="card-body">
+    <div class="time-statement">You've completed <%= todo_list.todo_items.where(:is_completed => true).count %> of <%= todo_list.todo_items.count %> tasks.</div>
      <h3 class="card-title"><%= todo_list.title.upcase %></h3>
       <h4 class="card-subtitle mb-2 text-muted"><%= todo_list.description %></h4>
       <div class="button-container">

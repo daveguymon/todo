@@ -1,4 +1,5 @@
 <div class="card">
+  <div class="time-statement">I'm <%= time_ago_in_words(todo_item.created_at) %> old.</div>
   <% if todo_item.completed? %>
     <h4><strike><%= todo_item.content %></strike></h4>
     <div class="button-container">

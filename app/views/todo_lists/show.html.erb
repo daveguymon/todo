@@ -4,6 +4,6 @@
 
 <h4><%= @todo_list.description %></h4>
 
-<%= render @todo_list.todo_items.order('is_completed ASC NULLS FIRST, priority') %>
+<%= render @todo_list.todo_items.order('is_completed ASC NULLS FIRST, priority, created_at') %>
 
 <%= render :partial => "todo_items/form" %>
